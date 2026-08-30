@@ -1,0 +1,9 @@
+@model GymClub.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<h2 class="text-danger">صار في خطأ!</h2>
+@if (Model.ShowRequestId)
+{
+    <p><strong>Request Id:</strong> @Model.RequestId</p>
+}

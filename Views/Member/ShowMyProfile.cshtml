@@ -1,0 +1,41 @@
+@model GymClub.Models.Member
+@{
+    ViewData["Title"] = "حسابي";
+}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">أهلاً @Model.Name 👋</h3>
+
+                <table class="table mt-3">
+                    <tr>
+                        <th>تاريخ بداية الاشتراك</th>
+                        <td>@Model.SubscriptionStart.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    <tr>
+                        <th>تاريخ انتهاء الاشتراك</th>
+                        <td>
+                            @Model.SubscriptionEnd.ToString("yyyy-MM-dd")
+                            @if (Model.SubscriptionEnd < DateTime.Now)
+                            {
+                                <span class="badge bg-danger">منتهي</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">فعّال</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>شو بدك تلعب اليوم (@DateTime.Now.ToString("dddd"))</th>
+                        <td><span class="badge bg-primary fs-6">@ViewBag.TodayExercise</span></td>
+                    </tr>
+                </table>
+
+                <a class="btn btn-outline-secondary btn-sm" asp-action="ChangePassword">تغيير كلمة السر</a>
+                <a class="btn btn-outline-danger btn-sm" asp-action="Logout">تسجيل خروج</a>
+            </div>
+        </div>
+    </div>
+</div>

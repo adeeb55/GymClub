@@ -1,0 +1,33 @@
+@model GymClub.Models.Member
+@{
+    ViewData["Title"] = "الجدول الأسبوعي";
+    var exercises = ViewBag.exercises as List<GymClub.Models.Exercise>;
+    string[] dayNames = { "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت" };
+}
+<h2 class="mb-4">الجدول الأسبوعي - @Model.Name</h2>
+<form asp-action="EditSchedule" method="post" class="col-md-6">
+    <input type="hidden" name="memberId" value="@Model.MemberId" />
+    @for (int day = 0; day < 7; day++)
+    {
+        var current = Model.Schedules.FirstOrDefault(s => s.DayOfWeek == day);
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">@dayNames[day]</label>
+            <div class="col-sm-9">
+                <select name="exerciseId" class="form-select">
+                    @foreach (var ex in exercises)
+                    {
+                        if (current != null && current.ExerciseId == ex.ExerciseId)
+                        {
+                            <option value="@ex.ExerciseId" selected>@ex.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ex.ExerciseId">@ex.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">حفظ الجدول</button>
+</form>

@@ -1,0 +1,26 @@
+@model GymClub.Models.Member
+@{
+    ViewData["Title"] = "تعديل مشترك";
+}
+<h2 class="mb-4">تعديل بيانات المشترك</h2>
+<form asp-action="Edit" method="post" class="col-md-5">
+    <input type="hidden" name="MemberId" value="@Model.MemberId" />
+    <input type="hidden" name="IsAdmin" value="@Model.IsAdmin" />
+    <div class="mb-3">
+        <label class="form-label">الاسم</label>
+        <input type="text" name="Name" class="form-control" value="@Model.Name" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">كلمة السر</label>
+        <input type="text" name="Password" class="form-control" value="@Model.Password" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">تاريخ بداية الاشتراك</label>
+        <input type="date" name="SubscriptionStart" class="form-control" value="@Model.SubscriptionStart.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">تاريخ نهاية الاشتراك</label>
+        <input type="date" name="SubscriptionEnd" class="form-control" value="@Model.SubscriptionEnd.ToString("yyyy-MM-dd")" required />
+    </div>
+    <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+</form>

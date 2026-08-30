@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h2 class="mb-4 text-center">تسجيل الدخول</h2>
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label class="form-label">رقم العضوية (Member Id)</label>
+                <input type="number" name="mid" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">كلمة السر</label>
+                <input type="password" name="mpass" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">دخول</button>
+        </form>
+    </div>
+</div>

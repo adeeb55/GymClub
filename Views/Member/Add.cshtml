@@ -1,0 +1,24 @@
+@model GymClub.Models.Member
+@{
+    ViewData["Title"] = "إضافة مشترك";
+}
+<h2 class="mb-4">إضافة مشترك جديد</h2>
+<form asp-action="Add" method="post" class="col-md-5">
+    <div class="mb-3">
+        <label class="form-label">الاسم</label>
+        <input type="text" name="Name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">كلمة السر</label>
+        <input type="text" name="Password" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">تاريخ بداية الاشتراك</label>
+        <input type="date" name="SubscriptionStart" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">تاريخ نهاية الاشتراك</label>
+        <input type="date" name="SubscriptionEnd" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">حفظ</button>
+</form>
